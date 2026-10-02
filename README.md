@@ -22,6 +22,6 @@ Framework preset: `None`. Build command: vazio. Build output directory: `public`
 
 ## Identificação (preencha após o fork)
 
-Nome: 
-RA: 
+Nome: Gabriel Martins dos Santos Garai
+RA: 2026108062
 URL: https://
