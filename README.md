@@ -1,27 +1,35 @@
 # Desenho Assinado
 
-Página que recebe um número inteiro entre 1 e 100 e devolve uma figura em SVG, assinada com um e-mail.
-
-A figura é a tabuada modular no círculo: 240 pontos igualmente espaçados numa circunferência, com cada ponto `i` ligado ao ponto `(k * i) mod 240`, em que `k = número + 1`. O número 1 produz uma cardioide, o 2 uma nefroide, e cada valor gera uma figura diferente.
-
-## Estado inicial
-
-Nesta versão tudo acontece no navegador. O arquivo `public/desenho.js` contém a função `gerarDesenho(numero, email)`, e o e-mail é digitado pelo usuário num campo do formulário.
-
-```
-public/
-  index.html    formulário com os campos número e e-mail
-  style.css     aparência da página
-  script.js     lê o formulário e chama gerarDesenho
-  desenho.js    gera o SVG (função pura, sem DOM)
-```
-
-## Publicação no Cloudflare Pages
-
-Framework preset: `None`. Build command: vazio. Build output directory: `public`.
-
-## Identificação (preencha após o fork)
-
 Nome: Gabriel Martins dos Santos Garai
 RA: 2026108062
-URL: https://
+URL: https://gabrielgarai-2bim-avalia1.pages.dev/
+
+Atividade individual de Desenvolvimento Web Prático. O navegador envia somente o número e o ID token do Google. A Pages Function verifica o token com o Google e gera o desenho no servidor, usando o e-mail verificado como assinatura.
+
+## Publicação
+
+- Branch de produção: main
+- Framework preset: None
+- Build command: vazio
+- Build output directory: public
+- Root directory: raiz do repositório (vazio)
+- Variável de ambiente: GOOGLE_CLIENT_ID, igual ao Client ID utilizado em public/index.html.
+
+No cliente OAuth Web application do Google, cadastrar como Authorized JavaScript origin:
+https://gabrielgarai-2bim-avalia1.pages.dev
+
+O Client ID presente no HTML foi recuperado do arquivo anterior deste repositório. É necessário confirmar que pertence ao cliente OAuth correto. Não utilizar Client Secret no código.
+
+## Contrato
+
+POST /api/desenho, corpo JSON com numero inteiro de 1 a 100 e cabeçalho Authorization: Bearer <id_token>.
+Validação na ordem método (405), corpo (400), token (401). Sucesso: 200 com Content-Type image/svg+xml.
+
+## Evidência obrigatória pendente
+
+Após publicar e concluir as configurações: entrar com Google, gerar com o número 62, clicar em Baixar SVG e adicionar o arquivo baixado em evidencias/exemplo.svg na branch main.
+O SVG deve vir do site publicado. Não há evidência fictícia neste pacote.
+
+## Origem
+
+A função lib/desenho.js foi preservada integralmente do repositório frankalcantara/2bim-Avalia1, conforme o enunciado. O estilo original também foi preservado.
